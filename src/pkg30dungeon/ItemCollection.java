@@ -46,4 +46,19 @@ public class ItemCollection {
         }
         
     }
+
+    boolean isRecqExist(List<String> worldObjectRecquire) {
+       if(worldObjectRecquire.isEmpty()) return true;
+       
+       outer: for(String name: worldObjectRecquire)
+       {
+           for(Item item: things.values())
+            {
+            if(item.getName().equals(name)) continue outer; 
+            }
+        return false;
+       }
+       
+       return true;
+    }
 }

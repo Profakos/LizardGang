@@ -44,8 +44,14 @@ public class TaskFactory {
      
      public static Task newPrimitiveTask(int ty, int tx, TaskEnum tasktype)
         {
-          Task newtask =  new PrimitiveTask(TaskFactory.nextid, ty, tx, tasktype); 
-         // TaskFactory.nextid += 1; 
+          PrimitiveTask newtask =  new PrimitiveTask(TaskFactory.nextid, ty, tx, tasktype); 
+          
+          switch(tasktype)
+          {
+              case digging: newtask.worldObjectRecquire.add("Digbox");
+          
+          }
+          
           return newtask;
         }
      

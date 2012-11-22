@@ -4,6 +4,7 @@
  */
 package pkg30dungeon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,12 +13,12 @@ import java.util.List;
  */
 public class PrimitiveTask extends Task{
 
-   
+   List<String> worldObjectRecquire;
     
     PrimitiveTask(int id, int y, int x, TaskEnum tasktype)
     {
     super( id, y, x,tasktype);
-     
+     worldObjectRecquire  = new ArrayList<>();
     }
     
      
@@ -27,6 +28,8 @@ public class PrimitiveTask extends Task{
         if(cc.canwork && cc.isAlive() && cc.stuntime==0)
         {
          
+            if(w.getItemcollection().isRecqExist(worldObjectRecquire)==false) return false;
+            
             if(this.getTasktype()==TaskEnum.walking)
             {
                for(int i = -1; i<2; i++)
@@ -127,6 +130,8 @@ public class PrimitiveTask extends Task{
     @Override
     void saveSpecificTask(List<String> sLine) { 
         sLine.add("-");
+        
+        
     }
 
     @Override
